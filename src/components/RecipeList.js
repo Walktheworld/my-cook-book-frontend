@@ -1,8 +1,10 @@
-const RecipeList= () => {
+import RecipeCard from './RecipeCard';
+
+const RecipeList= ({recipes}) => {
+    const renderRecipes = recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe}/>)
+    
     return (
-        <h1>
-            Recipe List
-        </h1>
+        <div className='r-container'>{renderRecipes}</div>
     )
 }
 

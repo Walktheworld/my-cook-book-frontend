@@ -1,9 +1,9 @@
 import { NavLink} from 'react-router-dom';
 
 const style = {
-  width: '50px',
-  padding: '12px',
-  margin: '0 6px 6px',
+  margin: 'auto',
+
+
 }
 
 const Navbar = () => {
