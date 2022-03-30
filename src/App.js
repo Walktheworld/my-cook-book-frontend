@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import RecipesContainer from './containers/RecipesContainer';
 import RecipeForm from './components/RecipeForm';
+import UserForm from './components/UserForm';
 
 function App() {
 
@@ -24,7 +25,8 @@ function App() {
               <Home/>
             </Route>
             <Route exact path="/recipes"><RecipesContainer/></Route>
-            <Route exact path="/newRecipe"><RecipeForm/></Route>
+            <Route exact path="/recipes/new"><RecipeForm/></Route>
+            <Route exact path="/users/new"><UserForm/></Route>
           </Switch>
         </>
       </Router>

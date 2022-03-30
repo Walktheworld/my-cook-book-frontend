@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Card  from 'react-bootstrap/Card'
+
+
 
 const RecipeForm= () => {
     const [recipe, setRecipe] = useState({
@@ -8,17 +11,19 @@ const RecipeForm= () => {
         directions: "",
     });
 
+    const history = useHistory()
+
     const handleChange = e => {
         setRecipe({
             ...recipe,
             [e.target.name]: e.target.value
         })
     }
-
+    
     const handleSubmit = e => {
         e.preventDefault()
         if ([recipe.name, recipe.ingredients, recipe.directions].some(val => val.trim() === "")) {
-            alert("Please fill in all blanks")
+            alert("Please fill in required field!")
         }
         const newRecipe = {
             name: recipe.name,
@@ -32,22 +37,27 @@ const RecipeForm= () => {
             },
             body: JSON.stringify(newRecipe)
         })
+        .then(()=>history.push("/recipes"))
+        
     }
     return (
-        <>
-            <div>New Recipe</div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
-                <input onChange={handleChange} text="text" name="name" value={recipe.name} required/><br/>
-
-                <label htmlFor="ingredients">Ingredients</label>
-                <input onChange={handleChange} text="text" name="ingredients" value={recipe.ingredients} required/><br/>
-
-                <label htmlFor="directions">Directions</label>
-                <input onChange={handleChange} text="text" name="directions" value={recipe.directions} required/><br/>
-            </form>
-            
-        </>
+        <Card className='new-recipe' style={{ width: '30rem', margin:'auto'}}>
+            <Card.Header>New Recipe</Card.Header>
+            <Card.Body>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name: </label><br/>
+                    <input className="formcss" onChange={handleChange} text="text" name="name" value={recipe.name} required/><br/>
+                    <br/>
+                    <label htmlFor="ingredients">Ingredients: </label><br/>
+                    <textarea className="formcss" onChange={handleChange} text="text" name="ingredients" value={recipe.ingredients} required/><br/>
+                    <br/>
+                    <label htmlFor="directions">Directions: </label><br/>
+                    <textarea className="formcss" onChange={handleChange} text="text"  name="directions" value={recipe.directions} required/>
+                    <br/>
+                    <input type="submit"/>
+                </form>
+            </Card.Body>
+        </Card>
     )
 }
 

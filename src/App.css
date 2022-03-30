@@ -17,13 +17,16 @@
   margin:10px;
 
 }
-
+.formcss{
+  width: 18rem;
+}
 .r-container {
   display: grid ;
   grid-template-columns: auto auto;
   grid-gap: .5rem;
 
 }
+
 
 
 

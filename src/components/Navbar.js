@@ -11,8 +11,8 @@ const Navbar = () => {
     <div className="navbar">
       <NavLink className="home" to="/" style= {style}>Home</NavLink>  
       <NavLink className="recipes" to="/recipes" style= {style}>Recipes</NavLink>
-      <NavLink className="newRecipes" to="/newRecipe" style= {style}>New Recipe</NavLink>
-      <NavLink className= "profile" to="/profile" style= {style}>Profile</NavLink>
+      <NavLink className="new-recipe" to="/recipes/new" style= {style}>New Recipe</NavLink>
+      <NavLink className= "new-user" to="/users/new" style= {style}>New User</NavLink>
     </div>
   );
 };
