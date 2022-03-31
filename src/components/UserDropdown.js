@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 
 const UserDropdown= () => {
     const [users, setUsers] = useState([]);
-
-
+    
     useEffect(() => {
         const fetchData = async () =>{
             try {
@@ -23,6 +22,7 @@ const UserDropdown= () => {
     //     const filterUser =users.filter(user => user.id !== id)
     //     foundUser(filterUser)
     // }
+
     return (
         <Dropdown users={users}  >
             <Dropdown.Toggle variant="success" id="dropdown-basic">Select User</Dropdown.Toggle>

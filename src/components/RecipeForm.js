@@ -3,10 +3,6 @@ import { useHistory } from "react-router-dom";
 import Card  from 'react-bootstrap/Card'
 import UserDropdown from "./UserDropdown";
 
-
-
-
-
 const RecipeForm= () => {
     const [recipe, setRecipe] = useState({
         name: "",
@@ -18,7 +14,6 @@ const RecipeForm= () => {
     const history = useHistory()
 
     const handleChange = e => {
-        
         setRecipe({
             ...recipe,
             [e.target.name]: e.target.value
