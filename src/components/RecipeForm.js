@@ -14,20 +14,15 @@ const RecipeForm= () => {
         directions: "",
         user_id: "",
     });
-    const [users, setUsers] = useState([]);
 
     const history = useHistory()
 
     const handleChange = e => {
+        
         setRecipe({
             ...recipe,
             [e.target.name]: e.target.value
         })
-    }
-
-    const findUserId= (id)=>{
-        const filteredUser =users.filter(user => user.id !== id)
-        setUsers(filteredUser)
     }
 
     const handleSubmit = e => {
@@ -67,7 +62,7 @@ const RecipeForm= () => {
                     <label htmlFor="directions">Directions: </label><br/>
                     <textarea className="formcss" onChange={handleChange} text="text"  name="directions" value={recipe.directions} required/>
                     <br/>
-                    <UserDropdown onChange={findUserId} text="text"  name="user_id" value={recipe.user_id}/>
+                    <UserDropdown onChange={handleChange} text="text"  name="user_id" value={recipe.user_id}/>
                     <br/>
                     <input type="submit"/>
 
