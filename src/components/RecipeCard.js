@@ -1,10 +1,6 @@
 import Card from 'react-bootstrap/Card'
-// import { useHistory } from "react-router-dom";
-
 
 const RecipeCard= ({recipe, removeRecipe}) => {
-
-    // const history = useHistory()
 
     const handleDelete = () => {
         fetch(`http://localhost:9393/recipes/${recipe.id}`, {
@@ -12,7 +8,6 @@ const RecipeCard= ({recipe, removeRecipe}) => {
         })
         .then(()=>removeRecipe(recipe.id))
     }
-
     
     return (
 

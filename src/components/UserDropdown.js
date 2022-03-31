@@ -21,11 +21,10 @@ const UserDropdown= () => {
 
     // const findUserId= (id)=>{
     //     const filterUser =users.filter(user => user.id !== id)
-    //     setUsers(filterUser)
+    //     foundUser(filterUser)
     // }
-
     return (
-        <Dropdown users={users}>
+        <Dropdown users={users}  >
             <Dropdown.Toggle variant="success" id="dropdown-basic">Select User</Dropdown.Toggle>
 
             <Dropdown.Menu>
