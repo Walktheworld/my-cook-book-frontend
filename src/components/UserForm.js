@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Card  from 'react-bootstrap/Card'
 
 
@@ -10,6 +10,8 @@ const UserForm= () => {
         username: "",
         email: "",
     });
+
+    const history = useHistory()
 
     const handleChange = e => {
         setUser({
@@ -35,6 +37,7 @@ const UserForm= () => {
             },
             body: JSON.stringify(newUser)
         })
+        .then(()=>history.push("/"))
     }
     return (
         <Card className='new-user' style={{ width: '30rem', margin:'auto'}}>

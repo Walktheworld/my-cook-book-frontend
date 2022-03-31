@@ -7,6 +7,7 @@ const RecipesContainer= () => {
 
     const [loading, setLoading] = useState(true);
     
+    
     useEffect(() => {
         const fetchData = async () =>{
             try {
@@ -20,11 +21,17 @@ const RecipesContainer= () => {
         }
         fetchData()
     }, []);
+    
+    const removeRecipe= (id)=>{
+        const filterRecipes =recipes.filter(recipe => recipe.id !== id)
+        setRecipes(filterRecipes)
+    }
+    
     if (loading) return <h1>...Loading...</h1>
 
     return (
     <div>
-        <RecipeList recipes={recipes}/>
+        <RecipeList recipes={recipes} removeRecipe={removeRecipe}/>
     </div>
     )
 }

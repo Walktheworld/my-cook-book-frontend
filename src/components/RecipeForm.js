@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Card  from 'react-bootstrap/Card'
+import UserDropdown from "./UserDropdown";
+
+
 
 
 
@@ -9,6 +12,7 @@ const RecipeForm= () => {
         name: "",
         ingredients: "",
         directions: "",
+        user_id: "",
     });
 
     const history = useHistory()
@@ -19,7 +23,7 @@ const RecipeForm= () => {
             [e.target.name]: e.target.value
         })
     }
-    
+
     const handleSubmit = e => {
         e.preventDefault()
         if ([recipe.name, recipe.ingredients, recipe.directions].some(val => val.trim() === "")) {
@@ -28,8 +32,10 @@ const RecipeForm= () => {
         const newRecipe = {
             name: recipe.name,
             ingredients: recipe.ingredients,
-            directions: recipe.directions
+            directions: recipe.directions,
+            user_id: recipe.user_id
         }
+
         fetch("http://localhost:9393/recipes", {
             method: "POST",
             headers:{
@@ -54,7 +60,10 @@ const RecipeForm= () => {
                     <label htmlFor="directions">Directions: </label><br/>
                     <textarea className="formcss" onChange={handleChange} text="text"  name="directions" value={recipe.directions} required/>
                     <br/>
+                    <UserDropdown  onChange={handleChange} text="text"  name="user_id" value={recipe.user_id}/>
+                    <br/>
                     <input type="submit"/>
+
                 </form>
             </Card.Body>
         </Card>
