@@ -1,9 +1,11 @@
 import { Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-const UserDropdown= () => {
+
+
+const UserDropdown= ({handleChange}) => {
     const [users, setUsers] = useState([]);
-    
+
     useEffect(() => {
         const fetchData = async () =>{
             try {
@@ -13,22 +15,16 @@ const UserDropdown= () => {
             } catch (error) {
                 alert(error)
             }
-
         }
         fetchData()
     }, []);
 
-    // const findUserId= (id)=>{
-    //     const filterUser =users.filter(user => user.id !== id)
-    //     foundUser(filterUser)
-    // }
-
     return (
-        <Dropdown users={users}  >
+        <Dropdown onSelect={handleChange}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">Select User</Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                {users.map(user => <Dropdown.Item  key={user.id} user={user} >{user.username}</Dropdown.Item>)}
+            <Dropdown.Menu >
+                {users.map(user => <Dropdown.Item eventKey={user.id} key={user.id} user_id={user.id} user={user} >{user.username}</Dropdown.Item>)}
             </Dropdown.Menu>
         </Dropdown>
     )

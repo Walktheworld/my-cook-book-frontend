@@ -37,7 +37,7 @@ const UserForm= () => {
             },
             body: JSON.stringify(newUser)
         })
-        .then(()=>history.push("/"))
+        .then(()=>history.push("/recipes/new"))
     }
     return (
         <Card className='new-user' style={{ width: '30rem', margin:'auto'}}>
@@ -52,6 +52,7 @@ const UserForm= () => {
                     <br/>
                     <label htmlFor="email">Email: </label><br/>
                     <input className="formcss" onChange={handleChange} text="text"  name="email" value={user.email} required/>
+                    <br/>
                     <br/>
                     <input type="submit"/>
                 </form>
